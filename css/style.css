@@ -1,0 +1,20 @@
+
+        body {
+            background-color: black;
+            color: white; /* Ensure text is visible on a black background */
+            font-family: Arial, sans-serif; /* Optional: Set a default font */
+        }
+        button {
+            background-color: #333; /* Dark button background */
+            color: white; /* Button text color */
+            border: none;
+            padding: 10px 20px;
+            margin: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #555; /* Slightly lighter button on hover */
+        }
+        #api-response, #api-response1 {
+            color: white; /* Ensure text in response containers is visible */
+        }

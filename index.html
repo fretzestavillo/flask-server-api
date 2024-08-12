@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Call API Button</title>
+    <link rel="stylesheet" href="css/style.css" />
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Include jQuery for AJAX -->
+  </head>
+  <body>
+    <h1>get person data from mongodb</h1>
+    <button id="call-api-btn">Call API for person</button>
+    <div id="api-response"></div>
+    <!-- Container to display API response -->
+
+    <h1>get all data from mongodb</h1>
+    <button id="call-api-btn1">Call API for all data</button>
+    <div id="api-response1"></div>
+    <!-- Container to display API response -->
+
+    <script>
+      // Function to handle button click event
+      $("#call-api-btn1").click(function () {
+        // Make an AJAX request to your Flask API endpoint
+        $.ajax({
+          url: "http://localhost:5000/api/data", // Replace with your API endpoint URL
+          type: "GET", // Specify the request type (GET, POST, etc.)
+          success: function (response) {
+            // Clear previous response
+            $("#api-response1").empty();
+
+            // Display API response
+            $("#api-response1").append("<h2>API Response</h2>");
+            $("#api-response1").append(
+              "<pre>" + JSON.stringify(response, null, 2) + "</pre>"
+            );
+          },
+          error: function (xhr, status, error) {
+            console.error("Error calling API:", error); // Log error message
+            // Handle error
+            $("#api-response1").empty();
+            $("#api-response1").append("<h2>Error calling API</h2>");
+            $("#api-response1").append("<p>" + error + "</p>");
+          },
+        });
+      });
+
+      // Function to handle button click event
+      $("#call-api-btn").click(function () {
+        // Make an AJAX request to your Flask API endpoint
+        $.ajax({
+          url: "http://localhost:5000/api/data/Tom%20Brown", // Replace with your API endpoint URL
+          type: "GET", // Specify the request type (GET, POST, etc.)
+          success: function (response) {
+            // Clear previous response
+            $("#api-response").empty();
+
+            // Display API response
+            $("#api-response").append("<h2>API Response</h2>");
+            $("#api-response").append(
+              "<pre>" + JSON.stringify(response, null, 2) + "</pre>"
+            );
+          },
+          error: function (xhr, status, error) {
+            console.error("Error calling API:", error); // Log error message
+            // Handle error
+            $("#api-response").empty();
+            $("#api-response").append("<h2>Error calling API</h2>");
+            $("#api-response").append("<p>" + error + "</p>");
+          },
+        });
+      });
+    </script>
+  </body>
+</html>
